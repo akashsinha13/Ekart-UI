@@ -17,6 +17,11 @@ body {
     display: none;
 }
 
+/* bootstrap style which is not required */
+.sr-only {
+    display: none;
+}
+
 /* Global form style */
 .form {
     &-control {
