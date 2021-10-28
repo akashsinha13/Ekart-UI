@@ -47,17 +47,6 @@
 .login-btn {
     display: block;
     width: 100%;
-    background-color: $primary-red;
-    border-color: $primary-red;
-    color: white;
-    box-shadow: 0 0.5rem 1.125rem -0.5rem rgb(254 105 106 / 90%);
-    transition: all 0.25s ease-in-out;
-
-    &:hover {
-        background-color: $primary-red-dark;
-        border-color: $primary-red-dark;
-        box-shadow: none;
-    }
 }
 
 .pwd {

@@ -6,10 +6,10 @@
 @import "./variables.scss";
 
 body {
-  font-size: 1rem;
-  font-family: "Rubik", sans-serif;
-  font-weight: normal; //400
-  line-height: 1.5;
+    font-size: 1rem;
+    font-family: "Rubik", sans-serif;
+    font-weight: normal; //400
+    line-height: 1.5;
 }
 
 /* bootstrap style which is not required */
@@ -40,6 +40,18 @@ body {
         font-size: 0.875rem;
         font-weight: 500;
         color: $primary-grey-dark;
+    }
+}
+
+/* Global button style */
+.btn-primary {
+    background-color: $primary-red;
+    border-color: $primary-red;
+    color: white;
+
+    &:hover, &:focus-visible, &:active, &:focus {
+        background-color: $primary-red-dark;
+        border-color: $primary-red-dark;
     }
 }
 
