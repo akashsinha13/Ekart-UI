@@ -10,8 +10,8 @@ export interface Product {
   category: string;
   brand: string;
   info: Record[];
-  thumbnailImage: any[];
-  images: any;
+  thumbnailImage: File;
+  images: File[];
 }
 
 export enum Color {
