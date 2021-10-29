@@ -7,7 +7,7 @@
   </a>
   <div class="card-body py-2">
     <h3 class="product-title fs-sm">
-      <a href="#">{{dataSource?.name}}</a>
+      <a href="#">{{dataSource.name}}</a>
     </h3>
     <div class="d-flex justify-content-between">
       <div class="product-price"><span class="text-accent">₹{{dataSource.price}}</span>
@@ -15,12 +15,14 @@
           {{dataSource.price + dataSource.discount}}
         </del>
       </div>
-      <ng-template #t let-fill="fill">
-        <span class="star" [class.full]="fill === 100">
-          <span class="half" [style.width.%]="fill">&Star;</span>&Star;
-        </span>
-      </ng-template>
-      <ngb-rating [(rate)]="dataSource.rating" [readonly]="true" [max]="5" [starTemplate]="t"></ngb-rating>
+      <ng-container *ngIf="dataSource.rating">
+        <ng-template #t let-fill="fill">
+          <span class="star" [class.full]="fill === 100">
+            <span class="half" [style.width.%]="fill">&Star;</span>&Star;
+          </span>
+        </ng-template>
+        <ngb-rating [(rate)]="dataSource.rating" [readonly]="true" [max]="5" [starTemplate]="t"></ngb-rating>
+      </ng-container>
     </div>
   </div>
   <div class="card-body card-body-hidden">

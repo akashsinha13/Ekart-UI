@@ -13,7 +13,7 @@ export class CatalogComponent implements OnInit {
   productCards: Observable<ProductCard[]>;
 
   constructor(private catalogService: CatalogService) {
-    this.productCards = this.catalogService.getProducts();
+    this.productCards = this.catalogService.getAllProducts();
   }
 
   ngOnInit(): void {
