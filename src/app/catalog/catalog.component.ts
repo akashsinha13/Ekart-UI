@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CatalogService } from './catalog.service';
 import { ProductCard } from './catalog.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'catalog',
@@ -8,14 +9,13 @@ import { ProductCard } from './catalog.model';
   styleUrls: ['./catalog.component.scss']
 })
 export class CatalogComponent implements OnInit {
-  public productCards: ProductCard[] = [];
-  constructor(private _catalogService: CatalogService) {
 
+  productCards: Observable<ProductCard[]>;
+
+  constructor(private catalogService: CatalogService) {
+    this.productCards = this.catalogService.getProducts();
   }
 
   ngOnInit(): void {
-    this._catalogService.getProducts().subscribe(data => {
-      this.productCards = data;
-    });
   }
 }

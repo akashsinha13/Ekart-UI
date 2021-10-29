@@ -14,7 +14,9 @@ export class CatalogService {
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<ProductCard[]> {
-    // return this.http.get<Product[]>(productUrl);
+    //return this.http.get<ProductCard[]>(productUrl);
+
+    // dummy data
     return of([
 
       { id: 0, name: 'Item 000', thumbnailImage: 'assets/02.jpg', price: 10.5, discount: 5, rating: 3 },

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:4200',
+  apiUrl: 'http://10.118.189.121:8080', // Docker URL
 };
 
 /*
