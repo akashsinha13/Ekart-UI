@@ -12,8 +12,7 @@ import { TopbarComponent } from './header/topbar/topbar.component';
 import { NavbarComponent } from './header/navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { CatalogComponent } from './catalog/catalog.component';
-import { RatingComponent } from './catalog/product/rating/rating.component';
-import { ProductComponent } from './catalog/product/product.component';
+import { ProductCardComponent } from './catalog/productCard/productCard.component';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { ProductManagementComponent } from './admin/product-management/product-management.component';
 
@@ -29,8 +28,7 @@ import { AdminService } from './admin/admin.service';
     NavbarComponent,
     LoginComponent,
     CatalogComponent,
-    RatingComponent,
-    ProductComponent,
+    ProductCardComponent,
     ProductManagementComponent,
     ProductFormComponent
   ],

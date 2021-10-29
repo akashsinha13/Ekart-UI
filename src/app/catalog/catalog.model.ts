@@ -1,14 +1,8 @@
-export interface Product {
+export interface ProductCard {
   id: number;
   name: string;
   price: number;
   discount: number;
-  thumbnailImage: File;
+  thumbnailImage: string;
   rating: number;
-  size: Size[];
-}
-
-export interface Size {
-  id: number;
-  size: string;
 }

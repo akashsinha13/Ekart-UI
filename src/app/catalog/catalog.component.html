@@ -1,3 +1,5 @@
-<div class="row mx-n2">
-  <product></product>
-</div>
+<section class="col-lg-8">
+  <div class="row mx-n2">
+    <productCard [dataSource]="data" class="col-md-4 col-sm-6 px-2 mb-4" *ngFor="let data of productCards;"></productCard>
+  </div>
+</section>
