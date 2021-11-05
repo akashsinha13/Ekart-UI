@@ -1,0 +1,68 @@
+<div class="footer bg-footer-lighter pt-3">
+    <div class="container">
+        <div class="row pb-2">
+            <div class="col-md-4 col-sm-6">
+                <div class="widget widget-links widget-light pb-2 mb-6">
+                    <h3 class="widget-title text-light">Shop departments</h3>
+                    <ul class="widget-list">
+                        <li class="widget-list-item" *ngFor= "let shopDepartment of shopDepartments;trackBy:trackByShopDeptName" >
+                            <a class="widget-list-link" id={{shopDepartment.name}} href="#">{{ shopDepartment.name }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="widget widget-links widget-light pb-2 mb-6">
+                    <h3 class="widget-title text-light">Account & shipping info</h3>
+                    <ul class="widget-list">
+                        <li class="widget-list-item" *ngFor= "let shipInfo of shippingTabs;trackBy:trackByshipTabName">
+                            <a class="widget-list-link" id={{shipInfo.name}} href="#">{{ shipInfo.name }}</a>
+                        </li> 
+                    </ul>
+                </div>
+                <div class="widget widget-links widget-light pb-2 mb-6">
+                    <h3 class="widget-title text-light">About us</h3>
+                    <ul class="widget-list">
+                        <li class="widget-list-item" *ngFor= "let about of aboutKart;trackBy:trackByaboutKartName">
+                            <a class="widget-list-link"  id={{about.name}} href="#">{{ about.name }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="widget pb-2 mb-6">
+                    <h3 class="widget-title text-light pb-1">Download our app</h3>
+                    <div class="d-flex flex-wrap">
+                        <div class="me-2 mb-2">
+                            <a class="btn-market btn-apple" href="#" role="button">
+                                <span class="btn-market-subtitle">Download on the </span>
+                                <span class="btn-market-title">App Store</span>
+                            </a>
+                        </div>
+                        <div class="mb-2">
+                            <a class="btn-market btn-google" href="#" role="button">
+                                <span class="btn-market-subtitle">Download on the </span>
+                                <span class="btn-market-title">Google Play</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pt-3 bg-footer-slighter">
+    <div class="container">
+        <div class="row pb-1">
+            <div class="col-md-3 col-sm-6 mb-6" *ngFor="let label of footerLabels;let i=index;">
+                <div class="d-flex">
+                    <i class= {{label.className}}></i>
+                    <div class="ps-1">
+                        <h6 class="fs-base text-light mb-1">{{ label.name }}</h6>
+                        <p class="mb-0 fs-ms text-light opacity-50">{{ label.content }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
