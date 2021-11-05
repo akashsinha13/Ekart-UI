@@ -15,11 +15,11 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSignIn(data: any) {
+  onSignIn() {
 
   }
 
-  onSignUp(data: any) {
+  onSignUp() {
 
   }
 }

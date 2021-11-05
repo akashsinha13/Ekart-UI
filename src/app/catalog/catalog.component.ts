@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CatalogService } from './catalog.service';
-import { ProductCard } from './catalog.model';
 import { Observable } from 'rxjs';
+
+import { ProductCard } from './catalog.model';
+import { CatalogService } from './catalog.service';
 
 @Component({
   selector: 'catalog',

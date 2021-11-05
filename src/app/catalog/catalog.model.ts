@@ -3,7 +3,7 @@ export interface ProductCard {
   name: string;
   price: number;
   discount: number;
-  thumbnailImage: any;
+  thumbnailImage: File;
   rating?: number;
   color?: Color;
   description?: string[];
