@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { footerService } from '../footer/footer.service';
+import { Category } from './footer.model';
 
 @Component({
   selector: 'footer',
@@ -7,21 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  public shopDepartments = [
-    { name: "Sneakers & Athletic"},
-    { name: "Athletic Apparelc"},
-    { name: "Sandals"},
-    { name: "Jeans"},
-    { name: "Shirts & Tops"},
-    { name: "Shorts"},
-    { name: "T-Shirts"},
-    { name: "Swimwear"},
-    { name: "Clogs & Mules"},
-    { name: "Bags & Wallets"},
-    { name: "Accessories"},
-    { name: "Sunglasses & Eyewear"},
-    { name: "Watches"},
-  ];
+  shopDepartments: Category[];
 
   public shippingTabs = [
     { name: "Your account"},
@@ -58,9 +46,17 @@ export class FooterComponent implements OnInit {
     return about.name;
   }
 
-  constructor() { }
+  constructor(private footerService: footerService) { }
 
   ngOnInit(): void {
+    this.getFooterCategories();
   }
 
+  private getFooterCategories(){
+    this.footerService.getCategories().subscribe(data =>
+      {
+        this.shopDepartments = data;
+        console.log(data);
+      })
+  }
 }
