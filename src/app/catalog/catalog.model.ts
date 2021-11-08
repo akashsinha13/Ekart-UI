@@ -1,6 +1,9 @@
-export interface ProductCard {
+export interface Record {
   id: number;
   name: string;
+}
+
+export interface ProductCard extends Record {
   price: number;
   discount: number;
   thumbnailImage: File;
@@ -17,4 +20,16 @@ export enum Color {
 export interface Size {
   id: number;
   size: string;
+}
+
+// tslint:disable-next-line
+export interface Category extends Record {
+}
+
+// tslint:disable-next-line
+export interface SubCategory extends Record {
+}
+
+// tslint:disable-next-line
+export interface Brand extends Record {
 }

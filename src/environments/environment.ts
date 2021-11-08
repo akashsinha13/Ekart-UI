@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  // apiUrl: 'https://postgres-database-ekart.herokuapp.com/api/v1'
   apiUrl: 'http://10.118.189.121:8080/api/v1', // Docker URL
 };
 

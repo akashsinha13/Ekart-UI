@@ -3,6 +3,15 @@
 .footer {
     flex-shrink: 0;
     display: block;
+    margin-top: 80% !important;
+}
+
+@media screen and (max-width: 600px) {
+    .footer {
+        flex-shrink: 0;
+        display: block;
+        margin-top: auto !important;
+    }
 }
 
 .pt-3 {

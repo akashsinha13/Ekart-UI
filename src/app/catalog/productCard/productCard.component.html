@@ -3,16 +3,18 @@
   <span class="sale badge bg-danger badge-shadow" *ngIf="dataSource.discount != 0">Sale</span>
   <button class="btn-wishlist btn-sm" type="button"><i class="bi bi-heart"></i></button>
   <a class="card-img-top d-block overflow-hidden" href="#">
-    <img src="{{dataSource?.thumbnailImage}}">
+    <div class="thumbnail-image">
+    <img [src]="image" alt="productImage">
+    </div>
   </a>
   <div class="card-body py-2">
     <h3 class="product-title fs-sm">
       <a href="#">{{dataSource.name}}</a>
     </h3>
     <div class="d-flex justify-content-between">
-      <div class="product-price"><span class="text-accent">₹{{dataSource.price}}</span>
+      <div class="product-price"><span class="text-accent">₹{{dataSource.price - dataSource.price*dataSource.discount/100}}</span>
         <del class="fs-sm text-muted" *ngIf="dataSource.discount != 0">
-          {{dataSource.price + dataSource.discount}}
+          {{dataSource.price}}
         </del>
       </div>
       <ng-container *ngIf="dataSource.rating">

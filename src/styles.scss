@@ -59,3 +59,14 @@ body {
 a {
     cursor: pointer;
 }
+
+/* Modal header style*/
+.modal-header {
+    display: block;
+    position: relative;
+    background: none;
+    border: 1px solid transparent;
+    font-weight: 500;
+    padding: 0.75rem 1.25rem;
+    color: $primary-grey;
+}

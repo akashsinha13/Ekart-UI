@@ -10,7 +10,8 @@ import { ProductCard } from '../catalog.model';
 export class ProductCardComponent implements OnInit {
 
   @Input() dataSource: ProductCard | undefined;
-
+  image: string;
   ngOnInit(): void {
+    this.image = 'data:image/png;base64,' + this.dataSource.thumbnailImage;
   }
 }

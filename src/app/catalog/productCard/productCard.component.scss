@@ -40,7 +40,7 @@
             box-shadow 0.2s ease-in-out;
         border: 0;
         border-radius: 50%;
-        background-color: $wishlist-background;
+        background-color: $icon-background;
         color: $primary-grey-dark;
         text-align: center;
         &:hover {
@@ -49,7 +49,7 @@
     }
     .card-body {
         position: relative;
-        background-color: $white;
+        background-color: $color-white;
         z-index: 2;
     }
     .card-body-hidden {
@@ -62,13 +62,13 @@
         border-radius: 0.4375rem;
         border-top-left-radius: 0;
         border-top-right-radius: 0;
-        background-color: $white;
+        background-color: $color-white;
         opacity: 0;
         visibility: hidden;
         z-index: 1;
     }
     &:hover {
-        border-color: $white;
+        border-color: $color-white;
         box-shadow: 0 0.3rem 1.525rem -0.375rem $primary-grey-light;
         z-index: 10;
 
@@ -128,9 +128,15 @@
     }
 
     .text-accent {
-        color: $price-color !important;
+        color: $text-color-blue !important;
     }
     .text-muted {
         color: $primary-grey-light !important;
+    }
+    .thumbnail-image {
+        align-items: center;
+        img {
+            padding: 1rem;
+        }
     }
 }
