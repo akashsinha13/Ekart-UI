@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { footerService } from '../footer/footer.service';
+
 import { Category } from './footer.model';
+import { FooterService } from './footer.service';
 
 @Component({
   selector: 'footer',
@@ -47,17 +48,17 @@ export class FooterComponent implements OnInit {
     return about.name;
   }
 
-  constructor(private footerService: footerService) { }
+  constructor(private categoriesList: FooterService) { }
 
   ngOnInit(): void {
     this.getFooterCategories();
   }
 
   private getFooterCategories(){
-    this.footerService.getCategories().subscribe(data =>
+    this.categoriesList.getCategories().subscribe((data) =>
       {
         this.shopDepartments = data;
         console.log(data);
-      })
+      });
   }
 }
