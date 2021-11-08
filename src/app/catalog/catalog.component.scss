@@ -1,4 +1,93 @@
+@import "../../variables";
+@import "../../../node_modules/bootstrap/scss/mixins/breakpoints";
+
 .mx-n2 {
     margin-right: -0.5rem !important;
     margin-left: -0.5rem !important;
+}
+
+// --------------------------------------------------
+// Toolbar for handheld devices
+// --------------------------------------------------
+.handheld-toolbar {
+    display: none;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-top: $border-width solid $border-color;
+    background-color: $toolbar-bg;
+    box-shadow: $toolbar-box-shadow;
+    z-index: $zindex-toolbar;
+}
+
+.handheld-toolbar-item {
+    padding: $spacer * .5;
+    padding-top: .125rem;
+    border-left: $border-width solid $border-color;
+    text-align: center;
+    text-decoration: none;
+    &:first-child { border-right: 0; }
+    .badge { font-size: .625rem; }
+}
+
+.handheld-toolbar-icon {
+    display: block;
+    color: $toolbar-icon-color;
+    font-size: $toolbar-icon-size;
+    > i, > .badge {
+      display: inline-block;
+      vertical-align: middle;
+    }
+}
+
+.handheld-toolbar-label {
+    display: block;
+    color: $toolbar-label-color;
+    font-size: $toolbar-label-font-size;
+  }
+  @include media-breakpoint-down(lg) {
+    .handheld-toolbar-enabled .footer { padding-bottom: 3.5rem; }
+    .handheld-toolbar {
+      display: block;
+      & + .btn-scroll-top { bottom: $spacer + 3.5rem; }
+    }
+}
+
+.page-title-overlap {
+    padding-bottom: 6.375rem;
+    background-color: $primary-grey-dark !important;
+    margin-top: -1rem;
+    & + * {
+      margin-top: -4.875rem;
+    }
+    @include media-breakpoint-down(md) {
+      padding-bottom: 5.5rem;
+    }
+}
+
+.sortby-font {
+    font-size: 0.85rem;
+}
+  
+// Navigation links style class
+.nav-link-style {
+  color: $nav-link-color;
+  > i {
+    margin-top: -.125rem;
+    vertical-align: middle;
+  }
+  &:hover { color: $nav-link-hover-color; }
+}
+.active > .nav-link-style,
+.nav-link-style.active {
+  color: $nav-link-active-color;
+}
+.nav-link-style.nav-link-light {
+  color: $nav-link-light-color;
+  &:hover { color: $nav-link-light-hover-color; }
+}
+.active > .nav-link-style.nav-link-light,
+.nav-link-style.nav-link-light.active {
+  color: $nav-link-light-active-color;
 }

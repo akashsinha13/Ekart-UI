@@ -1,0 +1,128 @@
+<aside class="col-lg-4">
+    <div class="offcanvas offcanvas-collapse bg-white w-100 rounded-3 shadow-lg py-1 shop-sidebar" id="shop-sidebar">
+        <div class="offcanvas-header align-items-center shadow-sm">
+            <h2 class="h5 mb-0">Filters</h2>
+            <button class="btn-close ms-auto" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body py-grid-gutter px-lg-grid-gutter">
+            <!-- Categories -->
+            <div class="widget widget-categories mb-4 pb-4 border-bottom">
+                <h3 class="widget-title">Shop categories</h3>
+                <div id="shop-categories" class="accordion">
+                    <!-- Category with search bar and scrollbar (more items) -->
+                    <div class="accordion-item" *ngFor="let category of categories; let elementIndex=index">
+                        <h3 class="accordion-header">
+                        <a href="#{{category.name}}" class="accordion-button" [ngClass]="{'collapsed': elementIndex != 0}" role="button" data-bs-toggle="collapse" aria-expanded="true" (click)="clearSearchText()">
+                            {{category.name}}
+                            <i class="bi bi-chevron-up accordion-icon"></i>
+                        </a>
+                        </h3>
+                        <div id="{{category.name}}" class="accordion-collapse collapse" [ngClass]="{'show': elementIndex === 0 }" data-bs-parent="#shop-categories">
+                            <div class="accordion-body">
+                                <div class="widget widget-links widget-filter">
+                        
+                                    <!-- Search -->
+                                    <div class="input-group input-group-sm">
+                                        <input type="text" class="widget-filter-search form-control rounded-end" placeholder="Search" id="elementIndex" [(ngModel)]="searchText"
+                                            (input)="search($event)"
+                                        >
+                                        <i class="bi bi-search searchIcon w3-tiny"></i>
+                                    </div>
+                        
+                                    <!-- Sub-categories -->
+                                    <ul class="widget-list widget-filter-list pt-1 max-height-13">
+                                        <!--Todo: To be removed in future and also remove hardcoded values-->
+                                        <li class="widget-list-item widget-filter-item">
+                                            <a href="#" class="widget-list-link d-flex justify-content-between align-items-center">
+                                                <span class="widget-filter-item-text">View all</span>
+                                                <span class="fs-xs text-muted ms-3">2,548</span>
+                                            </a>
+                                        </li>
+                                        <li class="widget-list-item widget-filter-item" *ngFor="let subcategory of subcategories; trackBy:trackByIdentity">
+                                            <a href="#" class="widget-list-link d-flex justify-content-between align-items-center">
+                                                <span class="widget-filter-item-text">{{subcategory.name}}</span>
+                                                <span class="fs-xs text-muted ms-3">10</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Price range slider -->
+            <div class="widget mb-4 pb-4 border-bottom">
+                <h3 class="widget-title">Price</h3>
+                <div class="range-slider">
+                    <nouislider #refElement [config]="rangeSliderConfig" [ngModel]="rangeSlider" [tooltips]="[ true, true ]" (slide)="updateSliderRange($event)"></nouislider>
+                    <div class="d-flex">
+                        <div class="w-50 pe-2 me-2">
+                          <div class="input-group input-group-sm"><span class="input-group-text currency"></span>
+                            <input class="form-control range-slider-value-min" type="text" [ngModel]="rangeSlider[0]" (change)="bindRangeSliderInput($event, 0, refElement)">
+                          </div>
+                        </div>
+                        <div class="w-50 ps-2">
+                          <div class="input-group input-group-sm"><span class="input-group-text currency"></span>
+                            <input class="form-control range-slider-value-max" type="text" [ngModel]="rangeSlider[1]" (change)="bindRangeSliderInput($event, 1, refElement)">
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Brand section -->
+            <div class="widget mb-4 pb-4 border-bottom">
+                <h3 class="widget-title">Brand</h3>
+                <div class="input-group input-group-sm">
+                    <input type="text" class="widget-filter-search form-control rounded-end pe-5" placeholder="Search" [(ngModel)]="brandSearchText"
+                        (input)="searchBrands($event)"
+                    >
+                    <i class="bi bi-search searchIcon w3-tiny"></i>
+                </div>
+                <ul class="widget-list widget-filter-list list-unstyled max-height-13">
+                    <li class="widget-filter-item d-flex justify-content-between align-items-center mb-1" *ngFor="let brand of brands; trackBy:trackByIdentity">
+                        <div class="form-check">
+                        <input type="checkbox" id="{{brand.name}}" class="form-check-input">
+                        <label class="form-check-label widget-filter-item-text" for="{{brand.name}}">{{brand.name}}</label>
+                        </div>
+                        <span class="fs-xs text-muted">425</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Sizes section -->
+            <div class="widget mb-4 pb-4 border-bottom">
+                <h3 class="widget-title">Size</h3>
+                <div class="input-group input-group-sm">
+                    <input type="text" class="widget-filter-search form-control rounded-end pe-5" placeholder="Search" [(ngModel)]="sizeSearchText"
+                        (input)="searchSizes($event)"
+                    >
+                    <i class="bi bi-search searchIcon w3-tiny"></i>
+                </div>
+                <ul class="widget-list widget-filter-list list-unstyled max-height-13">
+                    <li class="widget-filter-item d-flex justify-content-between align-items-center mb-1" *ngFor="let size of sizes; trackBy:trackByIdentity">
+                        <div class="form-check">
+                        <input type="checkbox" id="{{size.size}}" class="form-check-input">
+                        <label class="form-check-label widget-filter-item-text" for="{{size.size}}">{{size.size}}</label>
+                        </div>
+                        <span class="fs-xs text-muted">15</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Colors section -->
+            <div class="widget">
+                <h3 class="widget-title">Color</h3>
+                <div class="d-flex flex-wrap">
+                    <div class="form-check form-option text-center mb-2 mx-1 color-width" *ngFor="let color of getColors();">
+                      <input class="form-check-input" type="checkbox" id="color-{{color}}">
+                      <label class="form-option-label rounded-circle" for="color-{{color}}">
+                          <span class="form-option-color rounded-circle label-color-{{color}}"></span>
+                        </label>
+                      <label class="d-block color-label" for="color-{{color}}">{{color | titlecase}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
