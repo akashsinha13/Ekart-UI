@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { throwError } from 'rxjs';
+
+import { Category } from './footer.model';
+import { FooterService } from './footer.service';
 
 @Component({
   selector: 'footer',
@@ -7,21 +11,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  public shopDepartments = [
-    { name: 'Sneakers & Athletic'},
-    { name: 'Athletic Apparelc'},
-    { name: 'Sandals'},
-    { name: 'Jeans'},
-    { name: 'Shirts & Tops'},
-    { name: 'Shorts'},
-    { name: 'T-Shirts'},
-    { name: 'Swimwear'},
-    { name: 'Clogs & Mules'},
-    { name: 'Bags & Wallets'},
-    { name: 'Accessories'},
-    { name: 'Sunglasses & Eyewear'},
-    { name: 'Watches'},
-  ];
+  shopDepartments: Category[];
+  isLoading = false;
 
   public shippingTabs = [
     { name: 'Your account'},
@@ -59,9 +50,21 @@ export class FooterComponent implements OnInit {
     return about.name;
   }
 
-  constructor() { }
+  constructor(private footerService: FooterService) { }
 
   ngOnInit(): void {
+    this.getAllCategories();
   }
 
+  private getAllCategories(){
+    this.isLoading = true;
+    this.footerService.getCategories().subscribe((data) =>
+      {
+        this.shopDepartments = data;
+        this.isLoading = false;
+      }, (error) => {
+        this.isLoading = false;
+        return throwError(error);
+      });
+  }
 }

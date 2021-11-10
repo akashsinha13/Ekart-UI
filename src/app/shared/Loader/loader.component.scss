@@ -1,0 +1,38 @@
+@import '../../../variables'; 
+
+#spinner {
+	-webkit-animation: frames 1s infinite linear;
+	animation: frames 1s infinite normal;
+	background: transparent;
+	border: 0.5rem solid black;
+	border-radius: 100%;
+	border-top-color: $spinner-color;
+	width: 5rem;
+	height: 5rem;
+	opacity: .6;
+	padding: 0;
+	position: absolute;
+}
+@keyframes frames {
+  0% {
+	-webkit-transform: rotate(0deg);
+	transform: rotate(0deg);
+  }
+  100% {
+	-webkit-transform: rotate(359deg);
+	transform: rotate(359deg);
+  }
+}
+
+#pause {
+	display: block;
+	background:
+		rgba(0, 0, 0, 0.66)
+		no-repeat
+		0 0;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}
