@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { throwError } from 'rxjs';
 
 import { Category } from './footer.model';
 import { FooterService } from './footer.service';
@@ -11,6 +12,7 @@ import { FooterService } from './footer.service';
 export class FooterComponent implements OnInit {
 
   shopDepartments: Category[];
+  isLoading = false;
 
   public shippingTabs = [
     { name: 'Your account'},
@@ -48,17 +50,21 @@ export class FooterComponent implements OnInit {
     return about.name;
   }
 
-  constructor(private categoriesList: FooterService) { }
+  constructor(private footerService: FooterService) { }
 
   ngOnInit(): void {
-    this.getFooterCategories();
+    this.getAllCategories();
   }
 
-  private getFooterCategories(){
-    this.categoriesList.getCategories().subscribe((data) =>
+  private getAllCategories(){
+    this.isLoading = true;
+    this.footerService.getCategories().subscribe((data) =>
       {
         this.shopDepartments = data;
-        console.log(data);
+        this.isLoading = false;
+      }, (error) => {
+        this.isLoading = false;
+        return throwError(error);
       });
   }
 }
