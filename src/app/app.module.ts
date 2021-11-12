@@ -14,11 +14,13 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { CatalogService } from './catalog/catalog.service';
 import { FilterComponent } from './catalog/filter/filter.component';
 import { ProductCardComponent } from './catalog/productCard/productCard.component';
+import { QuickViewComponent } from './catalog/productCard/quick-view/quick-view.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './header/navbar/navbar.component';
 import { TopbarComponent } from './header/topbar/topbar.component';
 import { LoginComponent } from './login/login.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { LoginComponent } from './login/login.component';
     ProductCardComponent,
     ProductManagementComponent,
     ProductFormComponent,
-    FilterComponent
+    FilterComponent,
+    QuickViewComponent
   ],
   imports: [
     BrowserModule,
