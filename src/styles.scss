@@ -43,6 +43,10 @@ body {
     }
 }
 
+.ng-touched.ng-invalid:not(form)  {
+  border-left: 5px solid $error;
+}
+
 /* Global button style */
 .btn-primary {
     background-color: $primary-red;
@@ -52,6 +56,11 @@ body {
     &:hover, &:focus-visible, &:active, &:focus {
         background-color: $primary-red-dark;
         border-color: $primary-red-dark;
+    }
+
+    &:disabled {
+      background-color: $primary-red-light;
+      border-color: $primary-red-light;
     }
 }
 

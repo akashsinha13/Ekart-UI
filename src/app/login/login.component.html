@@ -32,12 +32,15 @@
       Sign up
     </a>
     <ng-template ngbNavContent>
-      <form #signUp="ngForm" (ngSubmit)="onSignUp()">
+      <form #signUp="ngForm" (ngSubmit)="onSignUp(signUp)">
         <label class="form-label" for="name">Name</label>
-        <input type="text" id="name" class="form-control" name="name" ngModel placeholder="Name" required autofocus>
+        <input type="text" id="name" class="form-control" name="name" ngModel required>
 
         <label class="form-label" for="email">Email</label>
-        <input type="text" id="email" class="form-control" name="email" ngModel placeholder="Email Address" required>
+        <input type="text" id="email" class="form-control" name="email" ngModel required>
+
+        <label class="form-label" for="mobNum">Mobile Number</label>
+        <input type="tel" pattern="/(7|8|9)\d{9}/" id="mobNum" class="form-control" name="mobNum" ngModel required>
 
         <label class="form-label" for="pwd">Password</label>
         <input type="password" id="pwd" class="form-control" name="password" ngModel required>
@@ -45,7 +48,7 @@
         <label class="form-label" for="confmpwd">Confirm password</label>
         <input type="password" id="confmpwd" class="form-control" name="confPassword" ngModel required>
 
-        <button class="btn btn-primary login-btn">Sign up</button>
+        <button class="btn btn-primary login-btn" [disabled]="!signUp.valid">Sign up</button>
       </form>
     </ng-template>
   </li>

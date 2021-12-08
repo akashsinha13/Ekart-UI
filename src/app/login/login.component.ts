@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  onSignUp() {
+  onSignUp(formData) {
 
   }
 }
