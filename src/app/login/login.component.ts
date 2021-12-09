@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { User } from './login.model';
 
 @Component({
   selector: 'login',
@@ -20,6 +21,13 @@ export class LoginComponent implements OnInit {
   }
 
   onSignUp(formData) {
+    let user: User = {
+      name: formData.form.value.name,
+      password: formData.form.value.password,
+      email: formData.form.value.email,
+      mobileNumber: formData.form.value.mobileNumber,
+    }
 
+    alert(user);
   }
 }

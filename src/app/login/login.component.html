@@ -57,7 +57,7 @@
 
         <div class="form-group">
           <label class="form-label">Mobile Number</label>
-          <input type="tel" class="form-control" name="mobNum" ngModel #mobNum="ngModel" required validateMobNum>
+          <input type="tel" class="form-control" name="mobileNumber" ngModel #mobNum="ngModel" required validateMobNum>
           <small class="text-danger" *ngIf="mobNum.touched && mobNum.errors?.required">
             Mobile number is required
           </small>
