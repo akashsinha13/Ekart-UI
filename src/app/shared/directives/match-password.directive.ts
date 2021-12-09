@@ -22,7 +22,7 @@ export class MatchPasswordDirective implements Validators {
       const pwdCtrl = formGroup.controls[password];
       const confirmPwdCtrl = formGroup.controls[confirmPassword];
 
-      if(!pwdCtrl || !confirmPwdCtrl) {
+      if (!pwdCtrl || !confirmPwdCtrl) {
         return null;
       }
 
@@ -35,6 +35,6 @@ export class MatchPasswordDirective implements Validators {
       } else {
         confirmPwdCtrl.setErrors(null);
       }
-    }
+    };
   }
 }

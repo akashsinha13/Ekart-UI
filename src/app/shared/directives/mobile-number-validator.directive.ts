@@ -23,7 +23,7 @@ export class MobileNumberValidatorDirective {
       const regex = new RegExp('^((\\+91-?)|0)?[0-9]{10}$');
       const valid = regex.test(control.value);
       return valid ? null : { invalidNumber: true };
-    }
+    };
   }
 
 }

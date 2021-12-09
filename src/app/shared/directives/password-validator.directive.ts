@@ -6,7 +6,7 @@ import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator } from '@an
   providers: [{
      provide: NG_VALIDATORS,
      useExisting: PasswordValidatorDirective,
-     multi: true 
+     multi: true
     }]
 })
 export class PasswordValidatorDirective implements Validator{
@@ -16,13 +16,13 @@ export class PasswordValidatorDirective implements Validator{
 
   patternValidator() {
     return (control: AbstractControl) => {
-      if(!control.value) {
+      if (!control.value) {
         return null;
       }
 
       const regex = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$');
       const valid = regex.test(control.value);
       return valid ? null : { invalidPassword: true };
-    }
+    };
   }
 }
