@@ -1,33 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component } from '@angular/core';
+import { of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { User } from './login.model';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   invalidLogin: boolean = false;
 
-  constructor(public activeModal: NgbActiveModal) { }
+  constructor(private loginService: LoginService) { }
 
-  ngOnInit() {
-  }
-
-  onSignIn() {
-
-  }
-
-  onSignUp(formData) {
-    let user: User = {
-      name: formData.form.value.name,
-      password: formData.form.value.password,
-      email: formData.form.value.email,
-      mobileNumber: formData.form.value.mobileNumber,
+  onSignIn(data: any) {
+    let credentials: Partial<User> = {
+      email: data.form.value.email,
+      password: data.form.value.password,
     }
 
-    alert(user);
+    this.loginService.login(credentials).pipe(
+      tap(() => {
+        this.invalidLogin = false;
+      }),
+      catchError(() => {
+        this.invalidLogin = true;
+        return of();
+      })
+    ).subscribe();
+  }
+
+  onSignUp(data: any) {
+    let user: User = {
+      name: data.form.value.name,
+      password: data.form.value.password,
+      email: data.form.value.email,
+      mobileNumber: data.form.value.mobileNumber,
+    }
+
+    this.loginService.addUser(user).subscribe();
   }
 }
