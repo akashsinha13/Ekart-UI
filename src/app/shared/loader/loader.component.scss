@@ -1,0 +1,63 @@
+@use "sass:math";
+
+.loader,
+.loader-xl,
+.loader-sm,
+.loader-inline {
+  animation: load 1s linear infinite;
+  display: block;
+  overflow: hidden;
+  position: absolute;
+
+  svg {
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
+}
+
+@mixin loader($size, $center: false) {
+  height: $size;
+  min-height: $size;
+  min-width: $size;
+  width: $size;
+  @if $center == true {
+    $pos: math.div($size, 2);
+    left: calc(50% - #{$pos});
+    top: calc(50% - #{$pos});
+  }
+}
+
+.loader {
+  @include loader(2.25rem, true);
+}
+
+.loader-xl {
+  @include loader(4.5rem, true);
+}
+
+.loader-sm {
+  @include loader(1.125rem, true);
+}
+
+.loader-inline {
+  @include loader(1.125rem);
+
+  display: inline-block;
+  position: static;
+  vertical-align: text-bottom;
+}
+
+button .loader {
+  @include loader(0.8125rem);
+}
+
+@keyframes load {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
