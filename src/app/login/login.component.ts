@@ -53,4 +53,8 @@ export class LoginComponent {
       })
     ).subscribe();
   }
+
+  closeModal(): void {
+    this.activeModal.close();
+  }
 }

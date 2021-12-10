@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit {
     this.modalService.open(LoginComponent, {
       centered: true,
       size: 'md',
+      backdrop: 'static',
     });
   }
 
