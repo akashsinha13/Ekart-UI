@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { LoginService } from 'src/app/login/login.service';
 
 import { LoginComponent } from '../../login/login.component';
 
@@ -10,9 +11,15 @@ import { LoginComponent } from '../../login/login.component';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private modalService: NgbModal) { }
+  userName: String;
+
+  constructor(private modalService: NgbModal,
+    private loginService: LoginService) { }
 
   ngOnInit(): void {
+    this.loginService.getUserName().subscribe(name => {
+      this.userName = name;
+    })
   }
 
   login() {
