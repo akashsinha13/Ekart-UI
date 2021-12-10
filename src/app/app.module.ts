@@ -24,7 +24,6 @@ import { LoginComponent } from './login/login.component';
 import { MatchPasswordDirective } from './shared/directives/match-password.directive';
 import { MobileNumberValidatorDirective } from './shared/directives/mobile-number-validator.directive';
 import { PasswordValidatorDirective } from './shared/directives/password-validator.directive';
-import { LoaderComponent } from './shared/loader/loader.component';
 
 
 @NgModule({
@@ -43,8 +42,7 @@ import { LoaderComponent } from './shared/loader/loader.component';
     QuickViewComponent,
     PasswordValidatorDirective,
     MatchPasswordDirective,
-    MobileNumberValidatorDirective,
-    LoaderComponent
+    MobileNumberValidatorDirective
   ],
   imports: [
     BrowserModule,
