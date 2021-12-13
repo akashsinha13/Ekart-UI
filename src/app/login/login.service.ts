@@ -6,22 +6,22 @@ import { environment } from 'src/environments/environment';
 import { User } from './login.model';
 
 const userUrl = `${environment.apiUrl}/users`;
-const loginUrl = `${environment.apiUrl}/login`;
+const loginUrl = `${environment.baseUrl}/login`;
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  public userSubject = new BehaviorSubject<String>('User');
+  public userSubject = new BehaviorSubject<string>('User');
 
   constructor(private http: HttpClient) { }
 
-  setUserName(name: String) {
+  setUserName(name: string) {
     this.userSubject.next(name);
   }
 
-  getUserName(): Observable<String> {
+  getUserName(): Observable<string> {
     return this.userSubject.asObservable();
   }
 
@@ -30,6 +30,10 @@ export class LoginService {
   }
 
   login(credentials: Partial<User>): Observable<unknown> {
-    return this.http.post(loginUrl, credentials);
+    const obj = {
+      username: credentials.email,
+      password: credentials.password
+    };
+    return this.http.post(loginUrl, obj, { withCredentials: true });
   }
 }
